@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns="http://globalnest.fe.up.pt/nesting" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://globalnest.fe.up.pt/nesting" elementFormDefault="qualified">
+	<xs:element name="nesting">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="author" type="xs:string" />
+				<xs:element name="date" type="xs:string" />
+				<xs:element name="description" type="xs:string" />
+				<xs:element name="verticesOrientation">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="clockwise" />
+							<xs:enumeration value="counterclockwise" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="coordinatesOrigin">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="up-left" />
+							<xs:enumeration value="down-left" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="problem">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="boards" type="pieceContainerType" minOccurs="1" maxOccurs="1" />
+							<xs:element name="lot" type="pieceContainerType" minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="nfps" type="nfpsType" minOccurs="0" maxOccurs="1" />
+				<xs:element name="ifps" type="nfpsType" minOccurs="0" maxOccurs="1" />
+				<xs:element name="polygons" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="polygon" type="polygonType" minOccurs="1" maxOccurs="unbounded" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="sequences" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="sequence" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="description" type="xs:string" />
+										<xs:element name="piece" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="solutions" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="solution" type="solutionType" minOccurs="1" maxOccurs="unbounded" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="pieceType">
+		<xs:sequence>
+			<xs:element name="orientation" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="interval" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:attribute name="minAngle" type="xs:decimal" />
+								<xs:attribute name="maxAngle" type="xs:decimal" />
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="enumeration" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:attribute name="angle" type="xs:decimal" />
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="reflection" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:attribute name="mirror" type="mirrorType" />
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="component" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="type" type="xs:integer" />
+					<xs:attribute name="idPolygon" type="xs:IDREF" />
+					<xs:attribute name="xOffset" type="xs:decimal" />
+					<xs:attribute name="yOffset" type="xs:decimal" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" />
+		<xs:attribute name="quantity" type="xs:integer" />
+	</xs:complexType>
+	<xs:complexType name="nfpsType">
+		<xs:sequence>
+			<xs:element name="nfp" type="nfpType" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="nfpType">
+		<xs:sequence>
+			<xs:element name="staticPolygon" type="nfpPolygonType" minOccurs="1" maxOccurs="1" />
+			<xs:element name="orbitingPolygon" type="nfpPolygonType" minOccurs="1" maxOccurs="1" />
+			<xs:element name="resultingPolygon" minOccurs="1" maxOccurs="1">
+				<xs:complexType>
+					<xs:attribute name="idPolygon" type="xs:IDREF" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="nfpPolygonType">
+		<xs:attribute name="idPolygon" type="xs:IDREF" />
+		<xs:attribute name="angle" type="xs:decimal" />
+		<xs:attribute name="mirror" type="mirrorType" />
+	</xs:complexType>
+	<xs:complexType name="polygonType">
+		<xs:sequence>
+			<xs:element name="lines" type="LinesType" minOccurs="1" maxOccurs="1" />
+			<xs:element name="xMin" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+			<xs:element name="xMax" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+			<xs:element name="yMin" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+			<xs:element name="yMax" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+			<xs:element name="perimeter" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+			<xs:element name="area" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+			<xs:element name="idConvexHullPolygon" type="xs:IDREF" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" />
+		<xs:attribute name="nVertices" type="xs:integer" />
+	</xs:complexType>
+	<xs:complexType name="pieceContainerType">
+		<xs:sequence>
+			<xs:element name="piece" type="pieceType" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="solutionType">
+		<xs:sequence>
+			<xs:element name="placement" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="idBoard" type="xs:IDREF" />
+					<xs:attribute name="boardNumber">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:minInclusive value="1" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="idPiece" type="xs:IDREF" />
+					<xs:attribute name="x" type="xs:decimal" />
+					<xs:attribute name="y" type="xs:decimal" />
+					<xs:attribute name="angle" type="xs:decimal" />
+					<xs:attribute name="mirror" type="mirrorType" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="usagePercentage">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0" />
+						<xs:maxInclusive value="100" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="extraInfo" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:any minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="mirrorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="none" />
+			<xs:enumeration value="x" />
+			<xs:enumeration value="y" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="LinesType">
+		<xs:choice minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="segment">
+				<xs:complexType>
+					<xs:attribute name="n" type="xs:integer" />
+					<xs:attribute name="x0" type="xs:decimal" />
+					<xs:attribute name="y0" type="xs:decimal" />
+					<xs:attribute name="x1" type="xs:decimal" />
+					<xs:attribute name="y1" type="xs:decimal" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="arc">
+				<xs:complexType>
+					<xs:attribute name="n" type="xs:integer" />
+					<xs:attribute name="x0" type="xs:decimal" />
+					<xs:attribute name="y0" type="xs:decimal" />
+					<xs:attribute name="x1" type="xs:decimal" />
+					<xs:attribute name="y1" type="xs:decimal" />
+					<xs:attribute name="xC" type="xs:decimal" />
+					<xs:attribute name="yC" type="xs:decimal" />
+					<xs:attribute name="radius" type="xs:decimal" />
+					<xs:attribute name="startAngle" type="xs:decimal" />
+					<xs:attribute name="offsetAngle" type="xs:decimal" />
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+
+	</xs:complexType>
+</xs:schema>

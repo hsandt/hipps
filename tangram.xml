@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<nesting xmlns="https://github.com/hsandt/hipps/blob/master/nesting_degenerated.xsd">
+    <name>Tangram Problem</name>
+    <author>NGUYEN HUU</author>
+    <date>2015/05/30</date>
+    <description>Tangram problem where pieces can rotate by increments of 45 or 90 degrees.</description>
+    <verticesOrientation>counterclockwise</verticesOrientation>
+    <coordinatesOrigin>down-left</coordinatesOrigin>
+    <problem>
+        <boards>
+            <piece id="board0" quantity="1">
+                <component idPolygon="squareContainer" type="0" xOffset="0." yOffset="0."/>
+            </piece>
+        </boards>
+        <lot>
+            <piece id="bigTriangle" quantity="2">
+                <orientation>
+                    <enumeration angle="0."/>
+                    <enumeration angle="45."/>
+                    <enumeration angle="90."/>
+                    <enumeration angle="135."/>
+                    <enumeration angle="180."/>
+                    <enumeration angle="-135."/>
+                    <enumeration angle="-90."/>
+                    <enumeration angle="-45."/>
+                </orientation>
+                <component idPolygon="bigTrianglePolygon" type="0" xOffset="0." yOffset="0."/>
+            </piece>
+            <piece id="mediumTriangle" quantity="1">
+                <orientation>
+                    <enumeration angle="0."/>
+                    <enumeration angle="45."/>
+                    <enumeration angle="90."/>
+                    <enumeration angle="135."/>
+                    <enumeration angle="180."/>
+                    <enumeration angle="-135."/>
+                    <enumeration angle="-90."/>
+                    <enumeration angle="-45."/>
+                </orientation>
+                <component idPolygon="mediumTrianglePolygon" type="0" xOffset="0." yOffset="0."/>
+            </piece>
+            <piece id="smallTriangle" quantity="2">
+                <orientation>
+                    <enumeration angle="0."/>
+                    <enumeration angle="45."/>
+                    <enumeration angle="90."/>
+                    <enumeration angle="135."/>
+                    <enumeration angle="180."/>
+                    <enumeration angle="-135."/>
+                    <enumeration angle="-90."/>
+                    <enumeration angle="-45."/>
+                </orientation>
+                <component idPolygon="smallTrianglePolygon" type="0" xOffset="0." yOffset="0."/>
+            </piece>
+            <piece id="square" quantity="1">
+                <orientation>
+                    <enumeration angle="0."/>
+                    <enumeration angle="45."/>
+                </orientation>
+                <component idPolygon="squarePolygon" type="0" xOffset="0." yOffset="0."/>
+            </piece>
+            <piece id="parallelogram" quantity="1">
+                <orientation>
+                    <enumeration angle="0."/>
+                    <enumeration angle="45."/>
+                    <enumeration angle="90."/>
+                    <enumeration angle="135."/>
+                </orientation>
+                <component idPolygon="parallelogramPolygon" type="0" xOffset="0." yOffset="0."/>
+            </piece>
+        </lot>
+    </problem>
+    <nfps/>
+    <ifps/>
+    <polygons>
+        <polygon nVertices="4" id="squareContainer">
+            <lines>
+                <segment n="1" x0="8." y0="0." x1="8." y1="8."/>
+                <segment n="2" x0="8." y0="8." x1="0." y1="8."/>
+                <segment n="3" x0="0." y0="8." x1="0." y1="0."/>
+                <segment n="4" x0="0." y0="0." x1="8." y1="0."/>
+            </lines>
+            <xMin>0.</xMin>
+            <xMax>8.</xMax>
+            <yMin>0.</yMin>
+            <yMax>8.</yMax>
+        </polygon>
+        <polygon nVertices="3" id="bigTrianglePolygon">
+            <lines>
+                <segment n="1" x0="0." y0="0." x1="8." y1="0."/>
+                <segment n="2" x0="8." y0="0." x1="4." y1="4."/>
+                <segment n="3" x0="4." y0="4." x1="0." y1="0."/>
+            </lines>
+            <xMin>0.</xMin>
+            <xMax>8.</xMax>
+            <yMin>0.</yMin>
+            <yMax>4.</yMax>
+        </polygon>
+        <polygon nVertices="3" id="mediumTrianglePolygon">
+            <lines>
+                <segment n="1" x0="0." y0="0." x1="4." y1="0"/>
+                <segment n="2" x0="4." y0="0." x1="0." y1="4"/>
+                <segment n="3" x0="0." y0="4." x1="0." y1="0"/>
+            </lines>
+            <xMin>0.</xMin>
+            <xMax>4.</xMax>
+            <yMin>0.</yMin>
+            <yMax>4.</yMax>
+        </polygon>
+        <polygon nVertices="3" id="smallTrianglePolygon">
+            <lines>
+                <segment n="1" x0="0." y0="0." x1="4." y1="0."/>
+                <segment n="2" x0="4." y0="0." x1="2." y1="2."/>
+                <segment n="3" x0="2." y0="2." x1="0." y1="0."/>
+            </lines>
+            <xMin>0.</xMin>
+            <xMax>4.</xMax>
+            <yMin>0.</yMin>
+            <yMax>2.</yMax>
+        </polygon>
+        <polygon nVertices="4" id="squarePolygon">
+            <lines>
+                <segment n="1" x0="2." y0="0." x1="4." y1="2."/>
+                <segment n="2" x0="4." y0="2." x1="2." y1="4."/>
+                <segment n="3" x0="2." y0="4." x1="0." y1="2."/>
+                <segment n="4" x0="0." y0="2." x1="2." y1="0."/>
+            </lines>
+            <xMin>0.</xMin>
+            <xMax>4.</xMax>
+            <yMin>0.</yMin>
+            <yMax>4.</yMax>
+        </polygon>
+        <polygon nVertices="4" id="parallelogramPolygon">
+            <lines>
+                <segment n="1" x0="0." y0="0." y1="0." x1="4."/>
+                <segment n="2" x0="4." y0="0." y1="2." x1="6."/>
+                <segment n="3" x0="6." y0="2." y1="2." x1="2."/>
+                <segment n="4" x0="2." y0="2." y1="0." x1="0."/>
+            </lines>
+            <xMin>0.</xMin>
+            <xMax>6.</xMax>
+            <yMin>0.</yMin>
+            <yMax>2.</yMax>
+        </polygon>
+    </polygons>
+    <boundaries/>
+</nesting>
